@@ -1,0 +1,1 @@
+This survey is to help students struggling to decide on a career to look at paths that are not existent in Plainview but with time and effort encourage them to stay, build businesses and increase the positive impact that they could have on their community.
