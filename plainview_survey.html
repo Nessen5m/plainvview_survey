@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plainview Economic Development Survey</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .question {
+            margin-bottom: 30px;
+        }
+        
+        .question label {
+            display: block;
+            color: #333;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .question input[type="text"],
+        .question textarea,
+        .question select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        .question input[type="text"]:focus,
+        .question textarea:focus,
+        .question select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .question textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .checkbox-item:hover {
+            background-color: #f8f9fa;
+            border-color: #667eea;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            cursor: pointer;
+        }
+        
+        .checkbox-item label {
+            margin: 0;
+            font-weight: 400;
+            font-size: 16px;
+            cursor: pointer;
+            flex: 1;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Plainview Economic Development Survey</h1>
+            <p>Help us shape the future of Plainview, Texas! Your input matters in bringing new businesses and opportunities to our community.</p>
+        </div>
+        
+        <form id="surveyForm">
+            <div class="question">
+                <label for="businessTypes">1. What types of businesses would you most like to see in Plainview? <span class="required">*</span></label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="retail" name="businessTypes" value="Retail stores and shopping centers">
+                        <label for="retail">Retail stores and shopping centers</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="restaurants" name="businessTypes" value="Restaurants and dining options">
+                        <label for="restaurants">Restaurants and dining options</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="manufacturing" name="businessTypes" value="Manufacturing and industrial facilities">
+                        <label for="manufacturing">Manufacturing and industrial facilities</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="healthcare" name="businessTypes" value="Healthcare and medical services">
+                        <label for="healthcare">Healthcare and medical services</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tech" name="businessTypes" value="Technology and professional services">
+                        <label for="tech">Technology and professional services</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="entertainment" name="businessTypes" value="Entertainment and recreation">
+                        <label for="entertainment">Entertainment and recreation</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <label for="specificBusinesses">2. Are there any specific businesses or franchises you'd like to see open in Plainview? <span class="required">*</span></label>
+                <textarea id="specificBusinesses" name="specificBusinesses" placeholder="Example: Costco, Olive Garden, specific tech companies, etc." required></textarea>
+            </div>
+            
+            <div class="question">
+                <label for="jobOpportunities">3. What type of job opportunities would benefit Plainview residents the most? <span class="required">*</span></label>
+                <select id="jobOpportunities" name="jobOpportunities" required>
+                    <option value="">-- Select an option --</option>
+                    <option value="entry-level">Entry-level positions for young workers</option>
+                    <option value="skilled-trades">Skilled trades (electricians, plumbers, mechanics)</option>
+                    <option value="professional">Professional careers (engineering, IT, management)</option>
+                    <option value="healthcare-jobs">Healthcare positions</option>
+                    <option value="remote-work">Remote work opportunities</option>
+                    <option value="entrepreneurship">Small business and entrepreneurship support</option>
+                </select>
+            </div>
+            
+            <div class="question">
+                <label for="barriers">4. What do you think is currently holding Plainview back from attracting new businesses? <span class="required">*</span></label>
+                <textarea id="barriers" name="barriers" placeholder="Share your thoughts on challenges facing our community..." required></textarea>
+            </div>
+            
+            <div class="question">
+                <label for="priorities">5. What should be the top priority for economic development in Plainview? <span class="required">*</span></label>
+                <select id="priorities" name="priorities" required>
+                    <option value="">-- Select an option --</option>
+                    <option value="higher-wages">Creating higher-paying jobs</option>
+                    <option value="more-jobs">Increasing the number of job opportunities</option>
+                    <option value="youth-retention">Keeping young people in Plainview</option>
+                    <option value="infrastructure">Improving infrastructure and utilities</option>
+                    <option value="quality-of-life">Enhancing quality of life amenities</option>
+                    <option value="downtown">Revitalizing downtown area</option>
+                </select>
+            </div>
+            
+            <div class="question">
+                <label for="additional">6. Any additional comments or suggestions for making Plainview a better place to live and work?</label>
+                <textarea id="additional" name="additional" placeholder="Optional: Share any other ideas or thoughts..."></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit Survey</button>
+            
+            <div class="success-message" id="successMessage">
+                <strong>Thank you!</strong> Your feedback has been recorded and will help shape Plainview's economic future.
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById('surveyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get all checked business types
+            const checkedBoxes = document.querySelectorAll('input[name="businessTypes"]:checked');
+            if (checkedBoxes.length === 0) {
+                alert('Please select at least one business type.');
+                return;
+            }
+            
+            // Collect form data
+            const businessTypes = Array.from(checkedBoxes).map(cb => cb.value);
+            const formData = {
+                businessTypes: businessTypes,
+                specificBusinesses: document.getElementById('specificBusinesses').value,
+                jobOpportunities: document.getElementById('jobOpportunities').value,
+                barriers: document.getElementById('barriers').value,
+                priorities: document.getElementById('priorities').value,
+                additional: document.getElementById('additional').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Log the data (in production, this would be sent to a server)
+            console.log('Survey Response:', formData);
+            
+            // Show success message
+            document.getElementById('surveyForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // In production, you would send this data to your server:
+            // fetch('your-server-endpoint', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(formData)
+            // });
+        });
+    </script>
+</body>
+</html>
